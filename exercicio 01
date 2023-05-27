@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+#define SIZE 4
+
+int main() {
+    int matriz[SIZE][SIZE];
+    int i, j;
+    int count = 0;
+
+    // Ler a matriz
+    printf("Digite os elementos da matriz:\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+            if (matriz[i][j] > 10) {
+                count++;
+            }
+        }
+    }
+
+    // Escrever a quantidade de valores maiores que 10
+    printf("A matriz possui %d valores maiores que 10.\n", count);
+
+    return 0;
+}
