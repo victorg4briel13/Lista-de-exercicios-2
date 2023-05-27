@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+#define SIZE 4
+
+// Função para encontrar a localização do maior valor na matriz
+void encontrarMaiorValor(int matriz[SIZE][SIZE], int *linhaMaior, int *colunaMaior) {
+    int i, j;
+    int maiorValor = matriz[0][0];
+    *linhaMaior = 0;
+    *colunaMaior = 0;
+
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            if (matriz[i][j] > maiorValor) {
+                maiorValor = matriz[i][j];
+                *linhaMaior = i;
+                *colunaMaior = j;
+            }
+        }
+    }
+}
+
+int main() {
+    int matriz[SIZE][SIZE];
+    int i, j;
+    int linhaMaior, colunaMaior;
+
+    // Ler a matriz
+    printf("Digite os elementos da matriz:\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    // Imprimir a matriz
+    printf("Matriz:\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Encontrar a localização do maior valor
+    encontrarMaiorValor(matriz, &linhaMaior, &colunaMaior);
+    printf("Localizacao do maior valor: [%d][%d]\n", linhaMaior, colunaMaior);
+
+    return 0;
+}
