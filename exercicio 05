@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+#define SIZE 5
+
+// Função para buscar um valor na matriz e retornar sua localização
+void buscarValor(int matriz[SIZE][SIZE], int valor, int *linhaEncontrada, int *colunaEncontrada) {
+    int i, j;
+
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            if (matriz[i][j] == valor) {
+                *linhaEncontrada = i;
+                *colunaEncontrada = j;
+                return; // Valor encontrado, encerra a função
+            }
+        }
+    }
+
+    // Valor não encontrado
+    *linhaEncontrada = -1;
+    *colunaEncontrada = -1;
+}
+
+int main() {
+    int matriz[SIZE][SIZE];
+    int i, j;
+    int valor;
+    int linhaEncontrada, colunaEncontrada;
+
+    // Ler a matriz
+    printf("Digite os elementos da matriz:\n");
+    for (i = 0; i < SIZE; i++) {
+        for (j = 0; j < SIZE; j++) {
+            printf("Elemento [%d][%d]: ", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+    }
+
+    // Ler o valor a ser buscado
+    printf("Digite o valor a ser buscado: ");
+    scanf("%d", &valor);
+
+    // Buscar o valor na matriz
+    buscarValor(matriz, valor, &linhaEncontrada, &colunaEncontrada);
+
+    // Verificar se o valor foi encontrado e exibir a localização ou a mensagem "não encontrado"
+    if (linhaEncontrada != -1 && colunaEncontrada != -1) {
+        printf("O valor %d foi encontrado na localizacao [%d][%d]\n", valor, linhaEncontrada, colunaEncontrada);
+    } else {
+        printf("O valor %d nao foi encontrado na matriz\n", valor);
+    }
+
+    return 0;
+}
